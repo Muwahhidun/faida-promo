@@ -1,0 +1,910 @@
+/* Базовые стили и переменные */
+:root {
+    --primary-color: #F2C56D;
+    --secondary-color: #D8AE64;
+    --text-color: #ffffff;
+    --dark-bg: #0E1A3A;
+    --section-bg: #162956;
+    --card-bg: #223355;
+    --border-color: rgba(242, 197, 109, 0.2);
+    --text-secondary: #cccccc;
+    --font-family: 'Montserrat', sans-serif;
+}
+
+/* Сброс стилей */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Общие стили */
+body {
+    font-family: var(--font-family);
+    background-color: var(--dark-bg);
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    background-attachment: fixed;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.page-wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.page-wrapper::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(14, 26, 58, 0.85);
+    z-index: -1;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Шапка сайта */
+.header {
+    padding: 20px 0;
+    background: var(--dark-bg);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover img {
+    transform: scale(1.05);
+}
+
+/* Основной контент */
+main {
+    flex: 1;
+    margin-top: 90px;
+}
+
+/* Hero секция */
+.hero {
+    padding: 80px 0;
+    background: linear-gradient(135deg, var(--section-bg) 0%, var(--dark-bg) 100%);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.12;
+    z-index: -1;
+}
+
+.hero__subtitle {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    font-weight: 700;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.hero__content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.hero__video {
+    flex: 0 0 auto;
+    max-width: 360px;
+    width: 100%;
+}
+
+.hero__video video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    background: #000000;
+    display: block;
+    object-fit: contain;
+}
+
+.hero__image {
+    flex: 1;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
+    position: relative;
+}
+
+.hero__title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin: 0;
+}
+
+.airpods-image {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 30px rgba(242, 197, 109, 0.3),
+        0 0 60px rgba(242, 197, 109, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    border: 3px solid transparent;
+    background: linear-gradient(#0E1A3A, #0E1A3A) padding-box,
+                linear-gradient(135deg, var(--primary-color), var(--secondary-color), var(--primary-color)) border-box;
+    display: block;
+}
+
+.airpods-image:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.5),
+        0 0 40px rgba(242, 197, 109, 0.5),
+        0 0 80px rgba(242, 197, 109, 0.3);
+}
+
+/* Эффект "приз" с трофеем */
+.hero__image::before {
+    content: '🏆';
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    font-size: 3rem;
+    z-index: 10;
+    filter: drop-shadow(0 0 10px rgba(242, 197, 109, 0.8));
+    animation: prize-pulse 2s ease-in-out infinite;
+}
+
+@keyframes prize-pulse {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        transform: scale(1.1) rotate(-10deg);
+    }
+}
+
+/* Секционные заголовки */
+.section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+/* Общие стили для секций */
+.section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    font-weight: 400;
+}
+
+/* Секция скачивания видео */
+.download-section {
+    padding: 80px 0;
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.download-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.download-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.download-content {
+    display: flex;
+    gap: 50px;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.video-container-main {
+    flex: 0 0 auto;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+    background: #000000;
+}
+
+.video-container-main video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    background: #000000;
+}
+
+.download-info {
+    flex: 1;
+    max-width: 450px;
+}
+
+.download-info h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.steps-list {
+    list-style: none;
+    counter-reset: step-counter;
+    margin: 0 0 35px 0;
+    padding: 0;
+}
+
+.steps-list li {
+    counter-increment: step-counter;
+    position: relative;
+    padding-left: 45px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.steps-list li::before {
+    content: counter(step-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.steps-list a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.steps-list a:hover {
+    text-decoration: underline;
+}
+
+.download-btn-big {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 18px 35px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(242, 197, 109, 0.3);
+    width: 100%;
+    justify-content: center;
+}
+
+.download-btn-big:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 30px rgba(242, 197, 109, 0.4);
+}
+
+/* Видео секции */
+.instruction-section {
+    padding: 80px 0;
+    background: var(--section-bg);
+    position: relative;
+}
+
+.instruction-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.instruction-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.video-container {
+    position: relative;
+    width: 100%;
+    max-width: 360px;
+    aspect-ratio: 9 / 16;
+    margin: 0 auto 30px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    background: #000000;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 15px;
+    object-fit: contain;
+    background: #000000;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.video-container:hover .video-overlay {
+    opacity: 1;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 24px;
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    pointer-events: all;
+}
+
+.download-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(242, 197, 109, 0.3);
+}
+
+.video-description {
+    text-align: center;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+}
+
+/* Инструкции - сетка */
+.instructions-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.instruction-item {
+    position: relative;
+    text-align: center;
+}
+
+.instruction-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.instruction-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.instruction-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-top: 15px;
+}
+
+/* Секция с условиями акции */
+.promotion-details {
+    padding: 80px 0;
+    background: var(--dark-bg);
+    position: relative;
+}
+
+.promotion-details::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.08;
+    z-index: 0;
+}
+
+.promotion-details .container {
+    position: relative;
+    z-index: 1;
+}
+
+/* Сетка с правилами */
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto 50px;
+}
+
+.rule-card {
+    background: var(--card-bg);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.rule-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+    border-color: rgba(242, 197, 109, 0.3);
+}
+
+.rule-card.highlight {
+    background: linear-gradient(135deg, rgba(242, 197, 109, 0.15), rgba(216, 174, 100, 0.1));
+    border-color: var(--primary-color);
+}
+
+.rule-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.rule-card h3 {
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.rule-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+.rule-card a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.rule-card a:hover {
+    text-decoration: underline;
+}
+
+.final-info {
+    margin-top: 50px;
+    padding: 35px;
+    background: linear-gradient(135deg, rgba(242, 197, 109, 0.15) 0%, rgba(242, 197, 109, 0.08) 100%);
+    border-radius: 20px;
+    border: 2px solid var(--primary-color);
+    text-align: center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.final-info p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 10px;
+}
+
+.final-info p:last-child {
+    margin-bottom: 0;
+}
+
+.final-info strong {
+    color: var(--primary-color);
+}
+
+/* Контактная секция */
+.contact-section {
+    padding: 80px 0;
+    background: var(--section-bg);
+    position: relative;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../assets/images/pattern.svg');
+    background-size: cover;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.contact-section .container {
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 30px;
+    background: var(--card-bg);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateY(-5px);
+}
+
+.contact-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-color);
+    color: var(--dark-bg);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.contact-icon.whatsapp-icon {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--dark-bg);
+}
+
+.contact-text a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.contact-text a:hover {
+    text-decoration: underline;
+}
+
+.contact-text p {
+    color: var(--text-secondary);
+    margin-top: 5px;
+}
+
+/* Подвал */
+.footer {
+    background: var(--dark-bg);
+    padding: 30px 0;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 1.8rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.4rem;
+    }
+
+    .hero__content {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .hero__video {
+        max-width: 300px;
+        order: 2;
+    }
+
+    .hero__image {
+        max-width: 350px;
+        order: 1;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 1rem;
+    }
+
+    /* Секция скачивания */
+    .download-content {
+        flex-direction: column;
+        gap: 35px;
+        align-items: center;
+    }
+
+    .video-container-main {
+        max-width: 320px;
+    }
+
+    .download-info {
+        text-align: center;
+    }
+
+    .download-info h3 {
+        font-size: 1.5rem;
+    }
+
+    .steps-list li {
+        text-align: left;
+        font-size: 1rem;
+    }
+
+    /* Инструкции */
+    .instructions-grid {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    /* Правила */
+    .rules-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+
+    .video-container {
+        margin-bottom: 20px;
+    }
+
+    .promotion-details, .download-section, .instruction-section, .contact-section {
+        padding: 60px 0;
+    }
+
+    .hero {
+        padding: 60px 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 15px;
+    }
+
+    .hero__title {
+        font-size: 1.5rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .hero__content {
+        gap: 20px;
+    }
+
+    .hero__video {
+        max-width: 250px;
+        order: 2;
+    }
+
+    .hero__image {
+        max-width: 280px;
+        order: 1;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.95rem;
+    }
+
+    /* Секция скачивания */
+    .video-container-main {
+        max-width: 280px;
+    }
+
+    .download-info h3 {
+        font-size: 1.3rem;
+    }
+
+    .steps-list li {
+        font-size: 0.95rem;
+        padding-left: 40px;
+    }
+
+    .steps-list li::before {
+        width: 28px;
+        height: 28px;
+        font-size: 0.9rem;
+    }
+
+    .download-btn-big {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+
+    /* Инструкции */
+    .instruction-title {
+        font-size: 1.2rem;
+    }
+
+    .instruction-description {
+        font-size: 0.95rem;
+    }
+
+    /* Правила */
+    .rule-card {
+        padding: 20px;
+    }
+
+    .rule-icon {
+        font-size: 2.5rem;
+    }
+
+    .rule-card h3 {
+        font-size: 1.1rem;
+    }
+
+    .rule-card p {
+        font-size: 0.95rem;
+    }
+
+    .contact-item {
+        padding: 20px;
+    }
+
+    .final-info {
+        padding: 25px;
+    }
+
+    .final-info p {
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  faida-promo-site:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: faida-promo-site
+    ports:
+      - "1991:1991"
+    restart: unless-stopped
+    environment:
+      - NGINX_HOST=localhost
+      - NGINX_PORT=1991
+    volumes:
+      - ./assets:/usr/share/nginx/html/assets:ro
+      - ./css:/usr/share/nginx/html/css:ro
+      - ./js:/usr/share/nginx/html/js:ro
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+    networks:
+      - faida-network
+
+networks:
+  faida-network:
+    driver: bridge
