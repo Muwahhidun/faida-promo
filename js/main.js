@@ -50,4 +50,23 @@ document.addEventListener('DOMContentLoaded', function() {
         observer.observe(el);
     });
 
+    // Автопереход с видео Шаг 1 на Шаг 2
+    const instructionVideo1 = document.getElementById('instructionVideo1');
+    const instructionVideo2 = document.getElementById('instructionVideo2');
+
+    if (instructionVideo1 && instructionVideo2) {
+        instructionVideo1.addEventListener('ended', function() {
+            // Прокручиваем к видео Шаг 2
+            instructionVideo2.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+
+            // Запускаем видео Шаг 2 после небольшой задержки
+            setTimeout(function() {
+                instructionVideo2.play();
+            }, 500);
+        });
+    }
+
 });
