@@ -69,4 +69,37 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // Lightbox для увеличения картинки Шаг 3
+    const imageContainer = document.querySelector('.image-container');
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxClose = document.querySelector('.lightbox-close');
+
+    if (imageContainer && lightbox) {
+        imageContainer.addEventListener('click', function() {
+            const img = this.querySelector('img');
+            lightbox.style.display = 'block';
+            lightboxImg.src = img.src;
+        });
+
+        // Закрытие по клику на крестик
+        lightboxClose.addEventListener('click', function() {
+            lightbox.style.display = 'none';
+        });
+
+        // Закрытие по клику вне изображения
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) {
+                lightbox.style.display = 'none';
+            }
+        });
+
+        // Закрытие по ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.style.display === 'block') {
+                lightbox.style.display = 'none';
+            }
+        });
+    }
+
 });

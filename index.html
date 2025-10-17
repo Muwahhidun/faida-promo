@@ -65,18 +65,19 @@
                             <h3>Что делать?</h3>
                             <ol class="steps-list">
                                 <li>
-                                    Нажми кнопку "Скачать видео"
-                                    <button class="download-btn-small" id="downloadBtn">
-                                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    Нажми кнопку
+                                    <button class="download-btn-big" id="downloadBtn">
+                                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path d="M12 2V14M12 14L8 10M12 14L16 10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                                             <path d="M2 17V19C2 20.1046 2.89543 21 4 21H20C21.1046 21 22 20.1046 22 19V17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                         </svg>
+                                        Скачать видео
                                     </button>
                                 </li>
                                 <li>Выложи это видео в свой статус WhatsApp</li>
                                 <li>Максимизируй просмотры — расскажи друзьям!</li>
                                 <li>Сними на видео количество просмотров</li>
-                                <li>Отправь видео в WhatsApp на <a href="https://wa.me/79882258513" target="_blank" rel="noopener noreferrer">+7 (988) 225-85-13</a></li>
+                                <li>Отправь на WhatsApp <a href="https://wa.me/79882258513" target="_blank" rel="noopener noreferrer">+7 (988) 225-85-13</a></li>
                             </ol>
                         </div>
                     </div>
@@ -117,8 +118,15 @@
                         <div class="instruction-item">
                             <div class="instruction-badge">Шаг 3</div>
                             <h3 class="instruction-title">Отправка нам</h3>
-                            <div class="video-container">
-                                <img src="assets/images/instruction step 3.jpg" alt="Отправка нам - Шаг 3">
+                            <div class="video-container image-container">
+                                <img src="assets/images/instruction step 3.jpg" alt="Отправка нам - Шаг 3" id="instructionImage3">
+                                <div class="image-zoom-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <circle cx="11" cy="11" r="8" stroke="currentColor" stroke-width="2"/>
+                                        <path d="M21 21L16.65 16.65" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                        <path d="M11 8V14M8 11H14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                                    </svg>
+                                </div>
                             </div>
                             <p class="instruction-description">Отправь видео с просмотрами нам на WhatsApp</p>
                         </div>
@@ -175,6 +183,12 @@
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- Image Lightbox Modal -->
+    <div id="imageLightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightboxImg">
     </div>
 
     <script src="js/main.js"></script>
